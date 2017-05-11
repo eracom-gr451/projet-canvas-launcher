@@ -7,3 +7,6 @@
 [submodule "rivercrossing"]
 	path = rivercrossing
 	url = https://github.com/eracom-gr451/Jeu_Trecy_Giada
+[submodule "cube"]
+	path = cube
+	url = https://github.com/eracom-gr451/Julie_Coralie_jeu
