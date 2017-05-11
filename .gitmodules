@@ -4,3 +4,6 @@
 [submodule "landscape"]
 	path = landscape
 	url = https://github.com/eracom-gr451/css-landscape
+[submodule "rivercrossing"]
+	path = rivercrossing
+	url = https://github.com/eracom-gr451/Jeu_Trecy_Giada
