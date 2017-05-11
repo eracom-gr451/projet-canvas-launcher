@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <title>Random Loader</title>
+        <script src="js.cookie.js"></script>
+	</head>
+	<body>	
+	<script>
+
+	// 0. Read document cookie:
+
+    // The cookie property works in a slightly odd way. When you read the value of the property, you get back all of the cookies that are associated with the document. Cookies are name/value pairs in the form name=value. If multiple cookies are available, all are returned as the result of the cookie property, separated by a semicolon, for example: name1=value1;name2=value2.
+
+    // Pour une meilleure compatibilité navigateurs, on utilise
+    // https://github.com/js-cookie/js-cookie
+
+    // 1. On définit la liste des Levels:
+
+	var GameLevels = [
+		"canvas_letters_nathanluca", 
+		"css-landscape",
+		"trois",
+		"quatre"
+	];
+
+    // On définit le nom de notre Cookie
+
+    var GameID = "gr451canvasgame";
+
+    // RESET:
+
+    // Cookies.remove(GameID);
+
+    // 2. On établit un ordre aléatoire
+
+	function shuffle(a) {
+    	for (let i = a.length; i; i--) {
+            let j = Math.floor(Math.random() * i);
+            [a[i - 1], a[j]] = [a[j], a[i - 1]];
+        }
+    }
+
+    shuffle(GameLevels);
+
+    // 3. On vérifie si le Cookie a déjà été défini:
+
+	var MyGameLevels = Cookies.get(GameID);
+
+	if ( MyGameLevels && MyGameLevels != '') {
+
+		console.log("Huh?: "+MyGameLevels);
+
+		// on a un historique!
+
+		// transformer le format JSON en Array JavaScript:
+
+		var MyGameLevels = JSON.parse(MyGameLevels);
+
+		// combien de niveaux reste-t-il?
+
+		console.log("levels: "+MyGameLevels.length);
+
+		if ( MyGameLevels.length > 1 ) {
+
+			// plusieurs niveaux!
+			// on avance d'un cran et on passe au suivant
+
+			MyGameLevels.splice(0,1);
+
+			console.log("Now: "+MyGameLevels);
+
+			// save the new state:
+
+			Cookies.set(GameID, JSON.stringify(MyGameLevels));
+
+			// On téléporte vers le prochain level:
+
+			console.log("Teleport to: "+ MyGameLevels[0]);
+
+			window.location.href = MyGameLevels[0];
+
+		} else {
+
+			// valeur de 1 = le dernier niveau a été accompli
+			// envoyer vers une page de fin (gameover)
+
+			console.log("Game Over");
+
+			Cookies.remove(GameID);
+
+        	var box = document.createElement('div');
+        	box.innerHTML = '<h1>Game Over</h1><p>Bravo, vous avez fini tous les niveaux!</p><a href="random.html">Recommencer</a>';
+        	document.querySelector("body").appendChild(box);
+
+		}
+
+	} else { 
+
+		// Pas d'historique défini. 
+		// On créé le nouveau cookie:
+
+		Cookies.set(GameID, JSON.stringify(GameLevels));
+
+		// On téléporte vers le prochain level:
+
+		console.log("Teleport to: "+ GameLevels[0]);
+
+		window.location.href = GameLevels[0];
+
+	}
+
+	</script>
+	</body>
+</html>
