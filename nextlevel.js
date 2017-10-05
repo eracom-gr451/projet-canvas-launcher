@@ -10,7 +10,7 @@ function TimeRunningOut() {
 
 	var interval = 15000;
 
-	setTimeout( function(){
+	timer = setTimeout( function(){
     NextLevel();
   },interval);
 
@@ -44,5 +44,11 @@ function NextLevel() {
 		document.getElementById("replay").addEventListener( "click", function(){
 			window.location.reload(true);
 		});
+
+		if (timer) {
+        clearTimeout(timer);
+        timer = 0;
+				console.log("stopped timer");
+    }
 
 }
