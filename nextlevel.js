@@ -8,13 +8,11 @@
 
 function TimeRunningOut() {
 
-	var interval = 3000;
+	var interval = 30000;
 
 	setTimeout( function(){
-
-                  NextLevel();
-
-    },interval);
+    NextLevel();
+  },interval);
 
 }
 
@@ -41,12 +39,10 @@ function NextLevel() {
     box.innerHTML = '<a href="#" id="replay">REPLAY</a><a id="next" href="../random.html">NEXT</a>';
     document.querySelector("body").appendChild(box);
 
+		// Action Replay: recharger la page courante
+
+		document.getElementById("replay").addEventListener( "click", function(){
+			window.location.reload(true);
+		});
+
 }
-
-// Action Replay: recharger la page courante
-
-document.querySelector("button").addEventListener( "click", function(){
-
- 
-});
-
