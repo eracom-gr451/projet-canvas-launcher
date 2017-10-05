@@ -33,10 +33,10 @@ function NextLevel() {
 	// au click, l'élément renvoie à random.htmlvar LevelLink = '<a href="'+L+'">'+L+'</a>';
     var box = document.createElement('div');
     box.style.position = 'absolute';
-    box.style.width = '300px';
-    box.style.height = '300px';
-    box.style.top = '300px';
-    box.style.right = '300px';
+    box.style.width = '6em';
+    box.style.height = '1.5em';
+    box.style.bottom = '10px';
+    box.style.right = '10px';
     box.style.zIndex = '10';
     box.style.background = 'white';
     box.innerHTML = '<a href="../random.html">NEXT</a>';
