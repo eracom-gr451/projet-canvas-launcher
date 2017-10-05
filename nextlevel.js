@@ -8,7 +8,7 @@
 
 function TimeRunningOut() {
 
-	var interval = 30000;
+	var interval = 15000;
 
 	setTimeout( function(){
     NextLevel();
@@ -36,7 +36,7 @@ function NextLevel() {
 
 		var box = document.createElement('div');
 		box.id = 'nextlevel';
-    box.innerHTML = '<a href="#" id="replay">REPLAY</a><a id="next" href="../random.html">NEXT</a>';
+    box.innerHTML = '<a href="#" id="replay">REPLAY</a><a id="next" href="https://eracom-gr451.github.io/projet-canvas-launcher/random.html">NEXT</a>';
     document.querySelector("body").appendChild(box);
 
 		// Action Replay: recharger la page courante
